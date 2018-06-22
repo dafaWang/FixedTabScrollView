@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.app.demo.HoldTabScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/root_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="700px"
+                android:background="#770077"
+                android:gravity="center"
+                android:text="顶部布局"
+                android:textColor="#fff" />
+
+            <RelativeLayout
+                android:id="@+id/rl_center"
+                android:layout_width="match_parent"
+                android:layout_height="100px">
+
+                <TextView
+                    android:id="@+id/tablayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:background="#009999"
+                    android:gravity="center"
+                    android:text="tablayout"
+                    android:textColor="#fff" />
+            </RelativeLayout>
+
+
+            <com.app.demo.CustomScrollViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff" />
+        </LinearLayout>
+
+    </com.app.demo.HoldTabScrollView>
+    <RelativeLayout
+        android:id="@+id/rl_top"
+        android:layout_width="match_parent"
+        android:layout_height="100px">
+
+    </RelativeLayout>
+</RelativeLayout>
