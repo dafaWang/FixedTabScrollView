@@ -328,4 +328,35 @@ public void onWindowFocusChanged(boolean hasFocus) {
     }
 ```
 
+
+### 修改activity中滑动监听
+
+```java
+@Override
+    public void onObservableScrollViewScrollChanged(int l, int t, int oldl, int oldt) {
+        if (t >= mHeight) {
+            if (tablayout.getParent() != topRl) {
+                centerRl.removeView(tablayout);
+                topRl.addView(tablayout);
+                canJump = false;
+            }
+        } else {
+            if (tablayout.getParent() != centerRl) {
+                topRl.removeView(tablayout);
+                centerRl.addView(tablayout);
+                canJump = true;
+            }
+        }
+        if (canJump && t >= oldt) {
+            scrollView.smoothScrollToSlow(0, mHeight, 300);
+        } else if (canJump && t < oldt) {
+            scrollView.smoothScrollToSlow(0, 0, 300);
+        }
+    }
+```
+我们添加了一个布尔类型的判断标识，如果为true的时候就开启自动吸顶（ViewPager没有占满一页的时候），为false的时候关闭自动吸顶。
+利用ScrollView中自定义的smoothScrollToSlow方法来滑动到指定位置，最后一个参数可以调节滑动速度。
+
+
+
 整套实现方式的关键代码都在这里了，具体的代码欢迎去顶部github地址下载跑一遍看看
